@@ -59,6 +59,31 @@ type Renderers = {
     MarkedRendererProps<Tokens.HTML | Tokens.Tag>
   >
 }
+type Events = {
+  text: Function
+  paragraph: Function
+  em: Function
+  strong: Function
+  hr: Function
+  blockquote: Function
+  del: Function
+  link: Function
+  image: Function
+  table: Function
+  tablehead: Function
+  tablebody: Function
+  tablerow: Function
+  tablecell: Function
+  list: Function
+
+  // Technically, listItem includes {type: string, tokens: []} in the props,
+  // but that's probably unintentional
+  listitem: Function
+  heading: Function
+  codespan: Function
+  code: Function
+  html: Function
+}
 type Props = {
   /**
    * The Markdown source to be parsed, or an array of tokens to be rendered directly.
@@ -70,6 +95,13 @@ type Props = {
    * object will be merged with the default renderers.
    */
   renderers?: Partial<Renderers>
+
+  /**
+ * An object where the keys represent a node type and the value is a Svelte component. This
+ * object will be merged with the default renderers.
+ */
+   events?: Partial<Events>
+
 
   /**
    * Options for [marked](https://marked.js.org/using_advanced#options)

@@ -9,6 +9,10 @@
   export let options = {}
   export let isInline = false
 
+  export let events = {}
+
+  export let context = {}
+
   const dispatch = createEventDispatcher();
 
   let tokens;
@@ -41,4 +45,4 @@
   });
 </script>
 
-<Parser {tokens} renderers={combinedRenderers} />
+<Parser {tokens} renderers={combinedRenderers} events={events} context={context}/>
